@@ -1,0 +1,1 @@
+Converts [Datadista's COVID dataset](https://github.com/datadista/datasets) from wide format to long format, to make it more consumer-friendly, motivated after this tweet: https://twitter.com/ramiroaznar/status/1241661548877185024
