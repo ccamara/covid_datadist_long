@@ -6,13 +6,12 @@ library(dplyr)
 #' @param url A string with the url where data will be retreived from.
 coviddataset_long <- function(name, url) {
   df <- read.csv(url) %>% 
-    select(-cod_ine) %>% 
-    pivot_longer(-CCAA, names_to = "date", values_to = "total") %>% 
+    pivot_longer(c(-cod_ine, -CCAA), names_to = "date", values_to = "total") %>% 
     mutate(date = gsub("X*", "", date)) %>% 
     mutate(date = gsub("\\.", "-", date)) %>% 
     mutate(date = as.Date(date))
   
-  write.csv(df, paste0("data/output/", name, ".csv"))
+  write.csv(df, paste0("data/output/", name, ".csv"), row.names = FALSE)
 }
 
 
