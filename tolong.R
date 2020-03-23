@@ -1,3 +1,4 @@
+library(tidyr)
 library(dplyr)
 
 #' Converts datadista wide data into long data.
@@ -14,7 +15,8 @@ coviddataset_long <- function(name, url) {
     mutate(date = as.Date(date, format = "%d-%m-%Y")) %>% 
     mutate(date = as.Date(date, format = "%Y-%m-%d"))
   
-  write.csv(df, paste0("data/output/", name, ".csv"), row.names = FALSE)
+  write.csv(df, paste0("data/output/", name, ".csv"), row.names = FALSE, 
+            quote = FALSE)
 }
 
 
